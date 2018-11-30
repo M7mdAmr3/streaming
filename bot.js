@@ -1,28 +1,55 @@
-﻿const Discord = require("discord.js");
+ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 
-
-client.on("ready", () => {
-console.log('By : m7md');
-client.user.setPresence({
-  status: 'dnd',
-  game: { 
-     type: 0,
-     name: 'Fortnite',
-     details: `Battle Royal - In Lobby`,
-     url: 'https://www.twitch.com/xdddd23',
-     state: `Playing Solo (1 of 1)`,
-    application_id: '502663260571697168',
-     assets: {
-        small_image: `511551607071309824`,
-        small_text: 'Tier 86',
-        large_image: `511551570677202955`,
-        large_text: `Fortnite` }
-
-  }
-    });
+client.on('ready', function() {
+    console.log(`i am ready ${client.user.username}`);
 });
 
 
-client.login("NDAxNDE2Mzg0MjE2Njk0Nzg1.DtpUpQ.TsHAQBrrW2P6ClRkP7e1iTnHk-c");
+
+
+
+
+
+
+
+
+
+const developers = ["401416384216694785","",""]
+const adminprefix = "!";
+client.on('message', message => {
+    var argresult = message.content.split(` `).slice(1).join(' ');
+      if (!developers.includes(message.author.id)) return;
+      
+  if (message.content.startsWith(adminprefix + 'ply')) {
+    client.user.setGame(argresult);
+      message.channel.send(`**Now Playig   ${argresult}**`)
+  } else 
+     if (message.content === (adminprefix + "leaveserver")) {
+    message.guild.leave();        
+  } else  
+  if (message.content.startsWith(adminprefix + 'wat')) {
+  client.user.setActivity(argresult, {type:'WATCHING'});
+      message.channel.send(`**Now Watching   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'lis')) {
+  client.user.setActivity(argresult , {type:'LISTENING'});
+      message.channel.send(`**Now Listening   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'stream')) {
+    client.user.setGame(argresult, "https://www.twitch.tv/idk");
+      message.channel.send(`**Now Streaming   ${argresult}**`)
+  }
+  if (message.content.startsWith(adminprefix + 'setname')) {
+  client.user.setUsername(argresult).then
+      message.channel.send(`Changing The Name To ..**${argresult}** `)
+} else
+if (message.content.startsWith(adminprefix + 'setavatar')) {
+  client.user.setAvatar(argresult);
+    message.channel.send(`Changing The Avatar To :**${argresult}** `);
+}
+});
+
+
+client.login(process.env.BOT_TOKEN);
