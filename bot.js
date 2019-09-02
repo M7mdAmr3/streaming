@@ -1,55 +1,41 @@
- const Discord = require('discord.js');
-const client = new Discord.Client();
+onst Discord = require('discord.js')
+const AhmedSniper = new Discord.Client();
 
 
-client.on('ready', function() {
-    console.log(`i am ready ${client.user.username}`);
-});
-
-
-
-
-
-
-
-
-
-
-
-const developers = ["401416384216694785","",""]
-const adminprefix = "!";
-client.on('message', message => {
-    var argresult = message.content.split(` `).slice(1).join(' ');
-      if (!developers.includes(message.author.id)) return;
-      
-  if (message.content.startsWith(adminprefix + 'ply')) {
-    client.user.setGame(argresult);
-      message.channel.send(`**Now Playig   ${argresult}**`)
-  } else 
-     if (message.content === (adminprefix + "leaveserver")) {
-    message.guild.leave();        
-  } else  
-  if (message.content.startsWith(adminprefix + 'wat')) {
-  client.user.setActivity(argresult, {type:'WATCHING'});
-      message.channel.send(`**Now Watching   ${argresult}**`)
-  } else 
-  if (message.content.startsWith(adminprefix + 'lis')) {
-  client.user.setActivity(argresult , {type:'LISTENING'});
-      message.channel.send(`**Now Listening   ${argresult}**`)
-  } else 
-  if (message.content.startsWith(adminprefix + 'stream')) {
-    client.user.setGame(argresult, "https://www.twitch.tv/idk");
-      message.channel.send(`**Now Streaming   ${argresult}**`)
+AhmedSniper.on('ready', function(){
+ console.log(`Logged in as ${AhmedSniper.user.tag}!`);
+    
+   // var s = ['483063515981283354','483063446376677386','483063378726879232','483063354332545045','483063463179190293'];
+   var s = ['483055660209012736','480169573530861578','483055655800930315'];
+    setInterval(function (){
+    AhmedSniper.user.setPresence({
+ game: { 
+    type: 1, // Ahmed Sniper
+    name: 'I AM Ahmed Sniper', //Ahmed Sniper
+   state: `الكلمة االثانية  `,
+    url: 'https://www.twitch.tv/01010948769', // Ahmed Sniper
+   details: 'الكلمة الثالثة',
+    application_id: '477187715658547201',
+     assets: {
+         large_image:   `${s[Math.floor(Math.random() * s.length)]}`, //Ahmed Sniper
+        large_text: `I'm mohamed :)` , //Ahmed Sniper
+       
+    }
   }
-  if (message.content.startsWith(adminprefix + 'setname')) {
-  client.user.setUsername(argresult).then
-      message.channel.send(`Changing The Name To ..**${argresult}** `)
-} else
-if (message.content.startsWith(adminprefix + 'setavatar')) {
-  client.user.setAvatar(argresult);
-    message.channel.send(`Changing The Avatar To :**${argresult}** `);
-}
+    });
+    }, 1000); //Ahmed Sniper هنيكك لو غيرت حاجة فى اسمى 
 });
 
 
-client.login(process.env.BOT_TOKEN);
+
+
+
+
+
+
+
+
+
+//نهايت الكود الى من صنع : AhmedSniper
+
+AhmedSniper.login(process.env.TOKEN); //حط هنا التوكن Ahmed Sniper
